@@ -1,0 +1,11 @@
+Query Error: TypeError: Cannot read properties of undefined (reading 'replace')
+    at createBetterSQLite3Client (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\adapter-better-sqlite3\dist\index.js:658:22)
+    at PrismaBetterSqlite3AdapterFactory.connect (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\adapter-better-sqlite3\dist\index.js:647:59)
+    at e.connect (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:57:311)
+    at #l (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:57:18565)
+    at C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:57:17902
+    at Object.runInChildSpan (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:65:2516)
+    at di.runInChildSpan (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:65:2850)
+    at #a (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:57:17840)
+    at jt.request (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:58:1995)
+    at Object.singleLoader (C:\Users\Reese\Documents\Praetor Defense\AGENT DEV\home-armory\node_modules\@prisma\client\runtime\client.js:65:6595)

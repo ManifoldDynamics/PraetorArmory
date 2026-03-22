@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Firearm {
+  id            String   @id @default(cuid())
+  make          String
+  model         String
+  calibers      String
+  serialNumber  String?
+  type          String
+  acquiredDate  DateTime?
+  purchasePrice Float?
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  accessories   Accessory[]
+  maintenanceLogs MaintenanceLog[]
+  nfaItems      NfaItem[]
+  tripLogs      TripFirearm[]
+}
+
+model Ammo {
+  id            String   @id @default(cuid())
+  caliber       String
+  brand         String
+  grain         Int?
+  quantity      Int      @default(0)
+  location      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tripLogs      TripFirearm[]
+}
+
+model Accessory {
+  id            String   @id @default(cuid())
+  type          String
+  brand         String
+  model         String
+  notes         String?
+  firearmId     String?
+  firearm       Firearm? @relation(fields: [firearmId], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  nfaItems      NfaItem[]
+}
+
+model MaintenanceLog {
+  id            String   @id @default(cuid())
+  firearmId     String
+  firearm       Firearm  @relation(fields: [firearmId], references: [id], onDelete: Cascade)
+  date          DateTime @default(now())
+  actionType    String
+  roundCount    Int      @default(0)
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model NfaItem {
+  id              String    @id @default(cuid())
+  formType        String
+  controlNumber   String?
+  submissionDate  DateTime?
+  fingerprintsSent DateTime?
+  approvedDate    DateTime?
+  status          String    @default("Pending")
+  taxStampCost    Float?    @default(200.00)
+  notes           String?
+
+  firearmId       String?
+  firearm         Firearm?  @relation(fields: [firearmId], references: [id], onDelete: Cascade)
+  accessoryId     String?
+  accessory       Accessory? @relation(fields: [accessoryId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model RangeTrip {
+  id            String   @id @default(cuid())
+  date          DateTime @default(now())
+  location      String?
+  weather       String?
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  firearms      TripFirearm[]
+}
+
+model TripFirearm {
+  id            String   @id @default(cuid())
+  rangeTripId   String
+  rangeTrip     RangeTrip @relation(fields: [rangeTripId], references: [id], onDelete: Cascade)
+  firearmId     String
+  firearm       Firearm   @relation(fields: [firearmId], references: [id], onDelete: Cascade)
+  ammoId        String?
+  ammo          Ammo?     @relation(fields: [ammoId], references: [id], onDelete: SetNull)
+  roundCount    Int       @default(0)
+  notes         String?
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}

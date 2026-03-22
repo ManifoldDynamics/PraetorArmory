@@ -1,0 +1,86 @@
+﻿
+> home-armory@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.2.1 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./src/app/trips/new/Ran
+geTripForm.tsx:4:1
+Module not found: 
+Can't resolve 
+'./actions'
+  [90m2 |[0m
+  [90m3 |[0m 
+[36mimport[0m { 
+useState } 
+[36mfrom[0m 
+[32m'react'[0m
+[31m[1m>[0m [90m4 
+|[0m [36mimport[0m 
+{ addRangeTrip } 
+[36mfrom[0m 
+[32m'./actions'[0m
+  [90m  |[0m [31m[1
+m^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^[0m
+  [90m5 |[0m
+  [90m6 |[0m 
+[36mexport[0m 
+[36mdefault[0m 
+[36mfunction[0m [33m
+RangeTripForm[0m({ 
+firearmsList, ammoList 
+}: { firearmsList: 
+any[], am...
+  [90m7 |[0m   
+[36mconst[0m [date, 
+setDate] = 
+useState([36mnew[0m 
+[33mDate[0m().toISOStr
+ing().split([32m'T'[0
+m)[[35m0[0m])
+
+
+
+Import trace:
+  Server Component:
+    ./src/app/trips/new
+/RangeTripForm.tsx
+    ./src/app/trips/new
+/page.tsx
+
+https://nextjs.org/docs
+/messages/module-not-fo
+und
+
+
+    at <unknown> (./src
+/app/trips/new/RangeTri
+pForm.tsx:4:1)
+    at <unknown> (https
+://nextjs.org/docs/mess
+ages/module-not-found)
